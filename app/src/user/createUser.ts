@@ -10,25 +10,23 @@ async function createUser(req: Request, res: Response) {
             data: {
                 email: req.body.email,
                 name: req.body.name,
-            }
+            },
         });
 
         const result: ResponseModel = {
             ok: true,
-            message: "User created successfully",
-            data: user
-        }
+            message: 'User created successfully',
+            data: user,
+        };
         res.json(result);
     } catch (error) {
         const result: ResponseModel = {
             ok: false,
             message: "Can't create the user",
-            data: error
-        }
+            data: error,
+        };
         res.json(result);
     }
 }
 
-export {
-    createUser,
-}
+export { createUser };

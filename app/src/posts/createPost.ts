@@ -12,34 +12,32 @@ async function createPost(req: Request, res: Response) {
                 content: req.body.content,
                 author: {
                     connect: {
-                        id: req.body.authorId
-                    }
+                        id: req.body.authorId,
+                    },
                 },
                 reaction: {
                     create: {
                         likes: 0,
-                        dislikes: 0
-                    }
-                }
-            }
+                        dislikes: 0,
+                    },
+                },
+            },
         });
 
         const result: ResponseModel = {
             ok: true,
-            message: "Post created successfully",
-            data: post
-        }
+            message: 'Post created successfully',
+            data: post,
+        };
         res.json(result);
     } catch (error) {
         const result: ResponseModel = {
             ok: false,
             message: "Can't create the post",
-            data: error
-        }
+            data: error,
+        };
         res.json(result);
     }
 }
 
-export {
-    createPost,
-}
+export { createPost };

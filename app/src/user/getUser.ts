@@ -8,30 +8,27 @@ async function getUser(req: Request, res: Response) {
     try {
         const user = await prisma.user.findFirstOrThrow({
             where: {
-                id: parseInt(req.params.id)
+                id: parseInt(req.params.id),
             },
             include: {
-                posts: true
-            }
+                posts: true,
+            },
         });
 
         const result: ResponseModel = {
             ok: true,
-            message: "Got user successfully",
-            data: user
-        }
+            message: 'Got user successfully',
+            data: user,
+        };
         res.json(result);
-        
     } catch (error) {
         const result: ResponseModel = {
             ok: false,
             message: "Can't get the user",
-            data: error
-        }
+            data: error,
+        };
         res.json(result);
     }
 }
 
-export {
-    getUser,
-}
+export { getUser };

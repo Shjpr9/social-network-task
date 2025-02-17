@@ -1,10 +1,11 @@
 import express from 'express';
 import 'dotenv/config';
-import { createPost } from './posts/createPost';
-import { getAllPosts, getPost, getUserPosts } from './posts/getPosts';
-import { updateReactions } from './reactions/updateReactions';
-import { createUser } from './user/createUser';
-import { getUser } from './user/getUser';
+import { createPost } from './posts/createPost.js';
+import { getAllPosts, getPost, getUserPosts } from './posts/getPosts.js';
+import { updateReactions } from './reactions/updateReactions.js';
+import { createUser } from './user/createUser.js';
+import { getUser } from './user/getUser.js';
+import { top5Posts, worst5Posts } from './analysis/analysis.js';
 
 const app = express();
 
@@ -23,6 +24,10 @@ app.get('/post/:id', getPost);
 
 // Reactions
 app.put('/reaction/:postId', updateReactions);
+
+// Analysis
+app.get('/analysis/top5', top5Posts);
+app.get('/analysis/worst5', worst5Posts);
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`);
