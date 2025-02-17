@@ -1,0 +1,6 @@
+{
+    "watch": ["app/src", ".env"],
+    "ext": "ts",
+    "ignore": ["app/src/**/*.spec.ts"],
+    "exec": "tsc && node ./app/dist/app.js"
+}
