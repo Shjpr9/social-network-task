@@ -29,6 +29,17 @@ async function getPost(req: Request, res: Response) {
             where: {
                 id: parseInt(req.params.id),
             },
+            select: {
+                title: true,
+                content: true,
+                authorId: true,
+                reaction: {
+                    select: {
+                        likes: true,
+                        dislikes: true,
+                    },
+                }
+            }
         });
         const result: ResponseModel = {
             ok: true,

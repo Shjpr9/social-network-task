@@ -12,7 +12,7 @@ async function createPost(req: Request, res: Response) {
                 content: req.body.content,
                 author: {
                     connect: {
-                        id: req.body.authorId,
+                        id: parseInt(req.body.authorId),
                     },
                 },
                 reaction: {

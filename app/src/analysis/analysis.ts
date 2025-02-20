@@ -8,7 +8,12 @@ async function top5Posts(req: Request, res: Response) {
     try {
         const posts = await prisma.post.findMany({
             include: {
-                reaction: true,
+                reaction: {
+                    select: {
+                        likes: true,
+                        dislikes: true,
+                    },
+                },
             },
             orderBy: {
                 reaction: {
@@ -38,7 +43,12 @@ async function worst5Posts(req: Request, res: Response) {
     try {
         const posts = await prisma.post.findMany({
             include: {
-                reaction: true,
+                reaction: {
+                    select: {
+                        likes: true,
+                        dislikes: true,
+                    }
+                },
             },
             orderBy: {
                 reaction: {

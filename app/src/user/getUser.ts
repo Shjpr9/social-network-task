@@ -10,9 +10,6 @@ async function getUser(req: Request, res: Response) {
             where: {
                 id: parseInt(req.params.id),
             },
-            include: {
-                posts: true,
-            },
         });
 
         const result: ResponseModel = {
